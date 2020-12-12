@@ -3,7 +3,7 @@ import MenuItem from "../menu-item/menu-item.component";
 import "./directory.styles.scss";
 
 //Decide on Component 2, Directory, Reusable Component
-//pipeline 1->2
+//pipeline 1->2.1
 
 class Directory extends React.Component {
   constructor() {
