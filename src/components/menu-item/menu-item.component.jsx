@@ -2,7 +2,7 @@ import React from "react";
 import "./menu-item.styles.scss";
 import { withRouter } from "react-router-dom";
 //Decide on Component 3, MenuItem, Reusable Component
-//pipeline 2->3.1->map3.1.1-3.1.5
+//pipeline 2.1->3.1
 const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => {
   //BrowserRouter HomePage -> props -> history,match,location
   return (
