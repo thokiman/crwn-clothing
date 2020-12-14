@@ -1,7 +1,7 @@
 import React from "react";
 import "./custom-button.style.scss";
-//Decide on Component 5, MenuItem, Reusable Component
-//pipeline 4->5
+//Decide on Component 4, MenuItem, Reusable Component
+//pipeline 3.3,3.4->4.1
 const CustomButton = ({ isGoogleSignIn, children, ...otherProps }) => {
   return (
     <button
