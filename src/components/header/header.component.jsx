@@ -6,6 +6,7 @@ import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { auth } from "../../firebase/firebase.utils";
 // Decide on Component 1, Homepage, Reusable Component
 //pipeline 0->1.3
+
 const Header = ({ currentUser }) => {
   return (
     <div className="header">
@@ -38,6 +39,7 @@ const Header = ({ currentUser }) => {
   );
 };
 // redux1
+//const {user} = this.props
 const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,
 });
