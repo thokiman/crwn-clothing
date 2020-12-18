@@ -2,8 +2,8 @@ import React from "react";
 import "./collection-preview.styles.scss";
 import CollectionItem from "../collection-item/collection-item.component";
 
-// Decide on Component 2, Homepage, Reusable Component
-//pipeline 1->2.2
+// Decide on Component 2, CollectionPreview, Reusable Component
+//pipeline 1.2->2.2
 
 const CollectionPreview = ({ title, items }) => {
   return (

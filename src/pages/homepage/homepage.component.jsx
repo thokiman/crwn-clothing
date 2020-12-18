@@ -4,7 +4,6 @@ import Directory from "../../components/directory/directory.component";
 // Decide on Component 1, Homepage, Non-Reusable Component
 //pipeline 0->1.1
 const Homepage = () => {
-  //BrowserRouter HomePage -> props -> history,match,location
   return (
     <div className="homepage">
       <Directory />

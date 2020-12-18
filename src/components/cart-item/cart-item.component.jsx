@@ -1,7 +1,8 @@
 import React from "react";
 
 import "./cart-item.styles.scss";
-
+//Decide on Component 3, CartItem, Reusable Component
+//pipeline 2.6->3.3
 const CartItem = ({ item: { imageUrl, price, name, quantity } }) => {
   return (
     <div className="cart-item">

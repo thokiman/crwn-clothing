@@ -3,8 +3,8 @@ import "./sign-in.styles.scss";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
-//Decide on Component 3, MenuItem, Reusable Component
-//pipeline 2.3->3.3
+//Decide on Component 2, MenuItem, Reusable Component
+//pipeline 1.3->2.3
 class SignIn extends React.Component {
   constructor() {
     super();

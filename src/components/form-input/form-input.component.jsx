@@ -1,7 +1,7 @@
 import React from "react";
 import "./form-input.styles.scss";
-//Decide on Component 4, MenuItem, Reusable Component
-//pipeline 3.3,3.4->4
+//Decide on Component 4, FormInput, Reusable Component
+//pipeline 2.3, 2.4 -> 4.1
 const FormInput = ({ handleChange, label, ...otherProps }) => {
   return (
     <div className="group">

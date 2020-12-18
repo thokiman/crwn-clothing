@@ -4,8 +4,8 @@ import CustomButton from "../custom-button/custom-button.component";
 import "./sign-up.styles.scss";
 
 import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
-//Decide on Component 3, MenuItem, Reusable Component
-//pipeline 2.3->3.4
+//Decide on Component 2, MenuItem, Reusable Component
+//pipeline 1.3->2.4
 class SignUp extends React.Component {
   constructor() {
     super();

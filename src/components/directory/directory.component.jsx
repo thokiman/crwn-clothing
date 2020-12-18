@@ -4,7 +4,7 @@ import "./directory.styles.scss";
 import SECTIONS_DATA from "./sections.data";
 
 //Decide on Component 2, Directory, Reusable Component
-//pipeline 1->2.1
+//pipeline 1.1->2.1
 
 class Directory extends React.Component {
   constructor() {

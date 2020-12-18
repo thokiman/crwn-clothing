@@ -3,7 +3,7 @@ import "./shop.styles.scss";
 import CollectionPreview from "../../components/collection-preview/collection-preview.component";
 import SHOP_DATA from "./shop.data";
 
-// Decide on Component 1, Homepage, Non-Reusable Component
+// Decide on Component 1, Shop, Non-Reusable Component
 //pipeline 0->1.2
 class ShopPage extends React.Component {
   constructor(props) {

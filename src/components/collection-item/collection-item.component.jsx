@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addItem } from "../../redux/cart/cart.action";
+import { addItem } from "../../redux/cart/cart.actions";
 import "./collection-item.styles.scss";
 import CustomButton from "../custom-button/custom-button.component";
-// Decide on Component 3, Homepage, Reusable Component
+// Decide on Component 3, CollectionItem, Reusable Component
 //pipeline 2.2->3.2
 
 const CollectionItem = ({ item, addItem }) => {
