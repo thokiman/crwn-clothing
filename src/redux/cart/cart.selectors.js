@@ -6,7 +6,8 @@ export const selectCartItems = createSelector(
   [selectCart],
   (cart) => cart.cartItems
 );
-
+// createStore create new instance from createStore function
+// and called by selectCartItemsCount(state)
 export const selectCartItemsCount = createSelector(
   [selectCartItems],
   (cartItems) =>
@@ -16,7 +17,8 @@ export const selectCartItemsCount = createSelector(
       0
     )
 );
-
+// createStore create new instance from createStore function
+// and called by selectCartTotal (state)
 export const selectCartTotal = createSelector([selectCartItems], (cartItems) =>
   cartItems.reduce(
     (accumulatedQuantity, cartItem) =>
@@ -24,7 +26,8 @@ export const selectCartTotal = createSelector([selectCartItems], (cartItems) =>
     0
   )
 );
-
+// createStore create new instance from createStore function
+// and called by selectCartHidden(state)
 export const selectCartHidden = createSelector(
   [selectCart],
   (cart) => cart.hidden
