@@ -8,7 +8,7 @@ import { store, persistor } from "./redux/store";
 
 import "./index.css";
 import App from "./App";
-
+//BrowserRouter -> props -> to access history,match,location
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
