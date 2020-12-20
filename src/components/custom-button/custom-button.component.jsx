@@ -1,23 +1,12 @@
 import React from "react";
-import "./custom-button.style.scss";
+import { CustomButtonContainer } from "./custom-button.styles";
 //Decide on Component 4 , CartDropdown, Reusable Component
 //pipeline 2.3, 2.4, 3.2, 2.6 -> 4.2
-const CustomButton = ({
-  isGoogleSignIn,
-  children,
-  inverted,
-  ...otherProps
-}) => {
+const CustomButton = ({ children, ...props }) => {
   return (
-    <button
-      type="button"
-      className={`${inverted ? "inverted" : ""}${
-        isGoogleSignIn ? "google-sign-in" : ""
-      } custom-button`}
-      {...otherProps}
-    >
+    <CustomButtonContainer type="button" {...props}>
       {children}
-    </button>
+    </CustomButtonContainer>
   );
 };
 

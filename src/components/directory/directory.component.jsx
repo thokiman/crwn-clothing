@@ -1,20 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+
 import { selectDirectorySections } from "../../redux/directory/directory.selectors";
 import MenuItem from "../menu-item/menu-item.component";
-import "./directory.styles.scss";
+import { DirectoryMenuContainer } from "./directory.styles";
 
 //Decide on Component 2, Directory, Reusable Component
 //pipeline 1.1->2.1
 
 const Directory = ({ sections }) => {
   return (
-    <div className="directory-menu">
+    <DirectoryMenuContainer>
       {sections.map(({ id, ...otherSection }) => {
         return <MenuItem key={id} {...otherSection} />;
       })}
-    </div>
+    </DirectoryMenuContainer>
   );
 };
 
