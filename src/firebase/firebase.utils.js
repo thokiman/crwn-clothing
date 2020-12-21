@@ -13,6 +13,7 @@ const config = {
   measurementId: "G-B86F20XYXV",
 };
 
+//seeding userAuth data to firebase
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
 
@@ -61,23 +62,49 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   }
   return userRef;
 };
-//seeding SHOP_DATA to firebase
+// seeding SHOP_DATA to firebase
 export const addCollectionAndDocuments = async (collectionKey, objectToAdd) => {
+  //1.create new collections
   const collectionRef = firestore.collection(collectionKey);
   console.log(
     "this is firestore.collection(collectionKey)// collectionRef :",
     collectionRef
   );
+  //call batch
   const batch = firestore.batch();
   objectToAdd.forEach((obj) => {
+    //2.create new document with unique id
     const newDocRef = collectionRef.doc();
     console.log(
       "this is addCollectionAndDocument// collection.doc()/ :",
       newDocRef
     );
+    // 3.set the actual value into document
     batch.set(newDocRef, obj);
   });
+  //4.return promise after commit
   return await batch.commit();
+};
+
+export const convertCollectionsSnapshotToMap = (collections) => {
+  const transformedCollection = collections.docs.map((doc) => {
+    const { title, items } = doc.data();
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title: title,
+      items: items,
+    };
+  });
+  console.log(
+    "this is firebase utils// transformedCollection :",
+    transformedCollection
+  );
+
+  return transformedCollection.reduce((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  }, {});
 };
 
 firebase.initializeApp(config);
