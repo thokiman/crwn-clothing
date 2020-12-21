@@ -12,23 +12,37 @@ const config = {
   appId: "1:1046717103792:web:2806825794fc677bf68575",
   measurementId: "G-B86F20XYXV",
 };
-//<1>
-//<3>
-//signup and signin google account
+
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
+
+  const collectionRef = firestore.collection("users");
+  console.log(
+    "this is firestore.collection('users')// query reference/ users :",
+    collectionRef
+  );
+  const snapshotCollectionRef = await collectionRef.get();
+  console.log(
+    "this is collectionSnapshot object from firestore.collection('users')// snapshot",
+    snapshotCollectionRef
+  );
+  const getDocumentSnapshotFromCollection = {
+    collection: snapshotCollectionRef.docs.map((doc) => doc.data()),
+  };
+  console.log(
+    "this is getDocumentSnapshotFromCollection object from firestore.collection('users')// getDocumentSnapshotFromCollection",
+    getDocumentSnapshotFromCollection
+  );
+
   console.log(
     "this is firestore.doc(users/userAuth.uid)// query reference/ userRef :",
     firestore.doc(`users/${userAuth.uid}`)
   );
-  console.log(
-    "this is firestore.collection('users')// query reference/ users :",
-    firestore.collection("users")
-  );
+
   const userRef = firestore.doc(`users/${userAuth.uid}`);
   const snapShot = await userRef.get();
   console.log(
-    "this is snapshot object from firestore.doc(users/userAuth.uid)// snapshot :",
+    "this is documentSnapshot object from firestore.doc(users/userAuth.uid)// snapshot :",
     snapShot
   );
   if (!snapShot.exist) {
@@ -47,8 +61,25 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   }
   return userRef;
 };
-//<3>
-//<1>
+//seeding SHOP_DATA to firebase
+export const addCollectionAndDocuments = async (collectionKey, objectToAdd) => {
+  const collectionRef = firestore.collection(collectionKey);
+  console.log(
+    "this is firestore.collection(collectionKey)// collectionRef :",
+    collectionRef
+  );
+  const batch = firestore.batch();
+  objectToAdd.forEach((obj) => {
+    const newDocRef = collectionRef.doc();
+    console.log(
+      "this is addCollectionAndDocument// collection.doc()/ :",
+      newDocRef
+    );
+    batch.set(newDocRef, obj);
+  });
+  return await batch.commit();
+};
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
@@ -59,4 +90,3 @@ provider.setCustomParameters({ prompt: "select_account" });
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export default firebase;
-//<1>

@@ -1,7 +1,11 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+import {
+  auth,
+  createUserProfileDocument,
+  addCollectionAndDocuments,
+} from "./firebase/firebase.utils";
 import { createStructuredSelector } from "reselect";
 
 import Homepage from "./pages/homepage/homepage.component";
@@ -13,6 +17,7 @@ import Header from "./components/header/header.component";
 
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
+import { selectCollectionsForPreview } from "./redux/shop/shop.selectors";
 
 import "./App.css";
 // Decide on Component 0, Homepage, Non-Reusable Component
@@ -23,7 +28,7 @@ class App extends React.Component {
 
   componentDidMount() {
     //mapStateToDispatch
-    const { setCurrentUser } = this.props;
+    const { setCurrentUser, collectionsArray } = this.props;
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       console.log("this is App.js// componentDidMount/ userAuth :", userAuth);
       if (userAuth) {
@@ -47,6 +52,10 @@ class App extends React.Component {
       // this.setState({ currentUser: userAuth });
     });
     console.log("this is unsubscribe method :", this.unsubscribeFromAuth);
+    addCollectionAndDocuments(
+      "collections",
+      collectionsArray.map(({ title, items }) => ({ title, items }))
+    );
   }
 
   componentWillUnmount() {
@@ -54,6 +63,7 @@ class App extends React.Component {
   }
 
   render() {
+    const { currentUser } = this.props;
     return (
       <div>
         <Header />
@@ -65,11 +75,7 @@ class App extends React.Component {
             exact
             path="/signin"
             render={() =>
-              this.props.currentUser ? (
-                <Redirect to="/" />
-              ) : (
-                <SignInAndSignUpPage />
-              )
+              currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
             }
           />
         </Switch>
@@ -80,6 +86,7 @@ class App extends React.Component {
 // redux1
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
+  collectionsArray: selectCollectionsForPreview,
 });
 
 const mapDispatchToProps = (dispatch) => ({
