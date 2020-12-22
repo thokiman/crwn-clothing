@@ -27,9 +27,12 @@ class ShopPage extends React.Component {
 
   componentDidMount() {
     const { updateCollections } = this.props;
-    const collectionRef = firestore.collection("collections");
-    this.unsubscribeFromSnapshot = collectionRef.onSnapshot(
-      async (snapshot) => {
+
+    fetch(
+      "https://firestore.googleapis.com/v1/projects/crwn-db/databases/(default)/documents/collections "
+    )
+      .then((response) => response.json())
+      .then(async (snapshot) => {
         console.log(
           "this is shop.component// componentDidMount/ .onSnapshot :",
           snapshot
@@ -41,8 +44,8 @@ class ShopPage extends React.Component {
         );
         updateCollections(collectionsMap);
         this.setState({ loading: false });
-      }
-    );
+      });
+
     console.log(
       "this is unssubscribeFromSnapshot func :",
       this.unsubscribeFromSnapshot
