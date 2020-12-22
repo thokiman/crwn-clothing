@@ -10,7 +10,7 @@ import CustomButton from "../custom-button/custom-button.component";
 //implement html = class='CollectionItemContainer button'
 
 export const CollectionItemContainer = styled.div`
-  width: 22vw;
+  width: 18vw;
   display: flex;
   flex-direction: column;
   height: 350px;
@@ -21,12 +21,14 @@ export const CollectionItemContainer = styled.div`
     .image {
       opacity: 0.8;
     }
+
     button {
       opacity: 0.85;
       display: flex;
     }
   }
 `;
+
 export const AddButton = styled(CustomButton)`
   width: 80%;
   opacity: 0.7;
@@ -41,7 +43,6 @@ export const BackgroundImage = styled.div`
   background-size: cover;
   background-position: center;
   margin-bottom: 5px;
-
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 `;
 
@@ -58,7 +59,7 @@ export const NameContainer = styled.span`
   margin-bottom: 15px;
 `;
 
-export const PriceContainer = styled.div`
+export const PriceContainer = styled.span`
   width: 10%;
   text-align: right;
 `;
