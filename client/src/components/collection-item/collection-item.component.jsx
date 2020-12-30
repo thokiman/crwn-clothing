@@ -9,7 +9,7 @@ import {
   CollectionFooterContainer,
   NameContainer,
   PriceContainer,
-} from "./collection-styles.styles";
+} from "./collection-item.styles";
 
 // Decide on Component 3, CollectionItem, Reusable Component
 //pipeline 2.2->3.2
