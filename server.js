@@ -3,6 +3,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
 const compression = require("compression");
+const enforce = require("express-sslify");
 
 if (process.env.NODE_ENV !== "production") require("dotenv").config();
 
@@ -17,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
 if (process.env.NODE_ENV === "production") {
+  app.use(enforce.HTTPS({ trustProtoHeader: true }));
   app.use(express.static(path.join(__dirname, "client/build")));
   //GET to user response from server
   app.get("*", (req, res) => {
@@ -27,6 +29,10 @@ if (process.env.NODE_ENV === "production") {
 app.listen(port, (error) => {
   if (error) throw error;
   console.log("Server running on port :", port);
+});
+//PWA
+app.get("/service-worker.js", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "..", "build", "service-worker.js"));
 });
 
 //POST to Stripe request from server
@@ -45,9 +51,10 @@ app.post("/payment", (req, res) => {
   });
 });
 
-//console.log(express)
+// console.log(express);
 // console.log(process.env.PORT);
 // console.log(process.env.NODE_ENV);
 // console.log(path.join(__dirname, "client"));
 // console.log(express.static(path.join(__dirname, "client")));
 // console.log(require("dotenv").config());
+// console.log(path.resolve(__dirname, "..", "build", "service-worker.js"));
