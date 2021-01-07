@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 // import CollectionsOverviewContainer from "../../components/collections-overview/collections-overview.container";
 import Spinner from "../../components/spinner/spinner.component";
 import { fetchCollectionsStart } from "../../redux/shop/shop.actions";
+import { ShopPageContainer } from "./shop.styles";
 
 const CollectionsOverviewContainer = lazy(() =>
   import("../../components/collections-overview/collections-overview.container")
@@ -14,16 +15,15 @@ const CollectionsOverviewContainer = lazy(() =>
 const CollectionPageContainer = lazy(() =>
   import("../collection/collection.container")
 );
-
 // Decide on Component 1, Shop, Non-Reusable Component
 //pipeline 0->1.2
-const ShopPage = ({ fetchCollectionsStart, match }) => {
+export const ShopPage = ({ fetchCollectionsStart, match }) => {
   useEffect(() => {
     fetchCollectionsStart();
   }, [fetchCollectionsStart]);
 
   return (
-    <div className="shop-page">
+    <ShopPageContainer>
       <Suspense fallback={<Spinner />}>
         <Route
           exact
@@ -35,7 +35,7 @@ const ShopPage = ({ fetchCollectionsStart, match }) => {
           component={CollectionPageContainer}
         />
       </Suspense>
-    </div>
+    </ShopPageContainer>
   );
 };
 

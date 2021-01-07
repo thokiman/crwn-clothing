@@ -8,7 +8,7 @@ import {
 
 //Decide on Component 4, FormInput, Reusable Component
 //pipeline 2.3, 2.4 -> 4.1
-const FormInput = ({ handleChange, label, ...props }) => {
+export const FormInput = ({ handleChange, label, ...props }) => {
   return (
     <GroupContainer>
       <FormInputContainer onChange={handleChange} {...props} />

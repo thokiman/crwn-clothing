@@ -17,7 +17,7 @@ import {
 } from "./checkout.styles";
 // Decide on Component 1, Homepage, Non-Reusable Component
 //pipeline 0->1.5
-const CheckoutPage = ({ cartItems, total }) => {
+export const CheckoutPage = ({ cartItems, total }) => {
   return (
     <CheckoutPageContainer>
       <CheckoutHeaderContainer>

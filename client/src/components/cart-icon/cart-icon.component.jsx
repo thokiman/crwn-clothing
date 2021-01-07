@@ -12,7 +12,7 @@ import {
 } from "./cart-icon.styles";
 //Decide on Component 2, CartIcon, Reusable Component
 //pipeline 1.4->2.5
-const CartIcon = ({ toggleCartHidden, itemCount }) => {
+export const CartIcon = ({ toggleCartHidden, itemCount }) => {
   return (
     <CartContainer onClick={toggleCartHidden}>
       <ShoppingIcon />

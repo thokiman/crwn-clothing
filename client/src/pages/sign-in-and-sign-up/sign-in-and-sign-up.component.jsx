@@ -6,7 +6,7 @@ import SignUp from "../../components/sign-up/sign-up.component";
 
 // Decide on Component 1, SignInAndSignUp, Non-Reusable Component
 //pipeline 0->1.3
-const SignInAndSignUpPage = () => {
+export const SignInAndSignUpPage = () => {
   return (
     <SignInAndSignUpContainer>
       <SignIn />

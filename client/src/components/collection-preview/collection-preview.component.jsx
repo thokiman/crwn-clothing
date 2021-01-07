@@ -11,7 +11,13 @@ import {
 // Decide on Component 2, CollectionPreview, Reusable Component
 //pipeline 1.2->2.2
 
-const CollectionPreview = ({ title, items, history, match, routeName }) => {
+export const CollectionPreview = ({
+  title,
+  items,
+  history,
+  match,
+  routeName,
+}) => {
   return (
     <CollectionPreviewContainer>
       <TitleContainer

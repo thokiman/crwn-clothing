@@ -7,7 +7,7 @@ import {
 } from "./cart-item.styles";
 //Decide on Component 3, CartItem, Reusable Component
 //pipeline 2.6->3.3
-const CartItem = ({ item: { imageUrl, price, name, quantity } }) => {
+export const CartItem = ({ item: { imageUrl, price, name, quantity } }) => {
   return (
     <CartItemContainer>
       <CartItemImage src={imageUrl} alt="item" />

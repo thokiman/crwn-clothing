@@ -14,7 +14,7 @@ import {
 // Decide on Component 3, CollectionItem, Reusable Component
 //pipeline 2.2->3.2
 
-const CollectionItem = ({ item, addItem }) => {
+export const CollectionItem = ({ item, addItem }) => {
   const { name, price, imageUrl } = item;
   return (
     <CollectionItemContainer>

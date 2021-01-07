@@ -21,7 +21,7 @@ import {
 // Decide on Component 1, Homepage, Reusable Component
 //pipeline 0->1.4
 
-const Header = ({ currentUser, hidden, signOutStart }) => {
+export const Header = ({ currentUser, hidden, signOutStart }) => {
   return (
     <HeaderContainer>
       <LogoContainer to={"/"}>

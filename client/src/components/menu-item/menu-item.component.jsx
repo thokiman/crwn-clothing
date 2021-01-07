@@ -11,7 +11,14 @@ import {
 
 //Decide on Component 3, MenuItem, Reusable Component
 //pipeline 2.1->3.1
-const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => {
+export const MenuItem = ({
+  title,
+  imageUrl,
+  size,
+  history,
+  linkUrl,
+  match,
+}) => {
   return (
     <MenuItemContainer
       size={size}

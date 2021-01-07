@@ -24,6 +24,7 @@ export function* getSnapshotFromUserAuth(userAuth, additionalData) {
       userAuth,
       additionalData
     );
+
     const userSnapshot = yield userRef.get();
     yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
   } catch (error) {
@@ -36,7 +37,7 @@ export function* signInWithGoogle() {
   try {
     const userPop = yield auth.signInWithPopup(googleProvider);
     const { user } = userPop;
-    console.log("this is user.saga// signInWithGoogle/ /userPop :", userPop);
+    // console.log("this is user.saga// signInWithGoogle/ /userPop :", userPop);
     yield getSnapshotFromUserAuth(user);
   } catch (error) {
     yield put(signInFailure(error.message));
@@ -44,16 +45,16 @@ export function* signInWithGoogle() {
 }
 
 //other sagas function, generator function
-export function* signInWihEmail({ payload: { email, password } }) {
+export function* signInWithEmail({ payload: { email, password } }) {
   try {
     const userEmailAndPassword = yield auth.signInWithEmailAndPassword(
       email,
       password
     );
-    console.log(
-      "this is user.saga// signInWithEmail/ /userEmailAndPassword :",
-      userEmailAndPassword
-    );
+    // console.log(
+    //   "this is user.saga// signInWithEmail/ /userEmailAndPassword :",
+    //   userEmailAndPassword
+    // );
     const { user } = userEmailAndPassword;
     yield getSnapshotFromUserAuth(user);
   } catch (error) {
@@ -64,10 +65,10 @@ export function* signInWihEmail({ payload: { email, password } }) {
 export function* isUserAuthenticated() {
   try {
     const userAuth = yield getCurrentUser();
-    console.log(
-      "this is user.saga// isUserAuthenticated/ userAuth :",
-      userAuth
-    );
+    // console.log(
+    //   "this is user.saga// isUserAuthenticated/ userAuth :",
+    //   userAuth
+    // );
     if (!userAuth) return;
     yield getSnapshotFromUserAuth(userAuth);
   } catch (error) {
@@ -95,7 +96,7 @@ export function* signUp({ payload: { email, password, displayName } }) {
       password
     );
     const { user } = userCreate;
-    console.log("this is sign-up// auth.createUserWithEmail :", userCreate);
+    // console.log("this is sign-up// auth.createUserWithEmail :", userCreate);
     yield put(signUpSuccess({ user, additionalData: { displayName } }));
   } catch (error) {
     yield put(signUpFailure(error));
@@ -125,7 +126,7 @@ export function* onGoogleSignInStart() {
 }
 //main function
 export function* onEmailSignInStart() {
-  yield takeLatest(UserActionTypes.EMAIL_SIGN_IN_START, signInWihEmail);
+  yield takeLatest(UserActionTypes.EMAIL_SIGN_IN_START, signInWithEmail);
 }
 
 export function* userSagas() {

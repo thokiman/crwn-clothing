@@ -19,3 +19,4 @@ export const CollectionItemsContainer = styled.div`
     margin-bottom: 30px;
   }
 `;
+CollectionItemsContainer.displayName = "CollectionItemsContainer";

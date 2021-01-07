@@ -9,7 +9,7 @@ import { DirectoryMenuContainer } from "./directory.styles";
 //Decide on Component 2, Directory, Reusable Component
 //pipeline 1.1->2.1
 
-const Directory = ({ sections }) => {
+export const Directory = ({ sections }) => {
   return (
     <DirectoryMenuContainer>
       {sections.map(({ id, ...otherSection }) => {

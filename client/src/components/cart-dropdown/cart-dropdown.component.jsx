@@ -17,7 +17,7 @@ import {
 //Decide on Component 2, CartDropdown, Reusable Component
 
 //pipeline 1.4->2.6
-const CartDropdown = ({ cartItems, history, dispatch }) => {
+export const CartDropdown = ({ cartItems, history, dispatch }) => {
   return (
     <CartDropdownContainer>
       <CartItemsContainer>
